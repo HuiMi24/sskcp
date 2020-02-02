@@ -8,3 +8,8 @@ RUN set -x &&\
     apt-get clean &&\
     apt-get clean all &&\
     rm -rf /var/lib/apt/lists/* 
+
+ENV LOCAL 127.0.0.1:4000
+ENV SERVER 1.1.1.1:4000
+ENV KCP_PARAMETERS --crypt aes-256 --key example --sndwnd 64 --rcvwnd 1024 --mtu 1300 --conn 2 --mode fast2
+CMD kcp  -l $LOCAL -r $SERVER  $KCP_PARAMETERS
