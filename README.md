@@ -1,6 +1,9 @@
 1. copy docker-compose.yml.example to docker-compose.yml
+
   `cp docker-compose.yml.example docker-compose.yml`
+
 2. change the docker-compose.yml
+
   ```
   version: '3.4'
 services:
@@ -28,8 +31,11 @@ services:
       - SERVER=<server ip>:<server port>
       - KCP_PARAMETERS=--crypt aes-255 --key example --sndwnd 64 --rcvwnd 1024 --mtu 1000 --conn 2 --mode fast
 ```
+
 3. build docker image
+
   `sudo ./build.sh`
   
 4. start container
+
   `sudo ./start.sh`
