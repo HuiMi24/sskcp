@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+  kcp:
+    image: kcp
+    build: 
+      context: ./kcp
+      dockerfile: Dockerfile
+    container_name: kcp
+    network_mode: host
+    restart: always
+    env_file:
+      - .env
+    command: ["sh", "-c", "kcp -l $KCP_LOCAL -r $KCP_SERVER  $KCP_PARAMETERS"]
+
+
+  ss:
+    image: shadowsocks/shadowsocks-libev
+    container_name: buyvm
+    network_mode: host
+    env_file:
+      - .env
+    restart: always
+    command: ["sh", "-c", "ss-redir -v -s $SS_SERVER -p $SS_SERVER_PORT -b $SS_LOCAL -l $SS_LOCAL_PORT $SS_PARAMETERS"]
