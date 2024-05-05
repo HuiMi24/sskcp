@@ -1,0 +1,18 @@
+{
+    "remoteaddr": "",
+    "localaddr": "",
+    "tcp": true,
+    "crypt": "",
+    "key": "",
+    "mode": "",
+    "mtu": ,
+    "sndwnd": 16384,
+    "rcvwnd": 16384,
+    "ds": 10,
+    "ps": 3,
+    "dsp": 46,
+    "nocomp": true,
+    "sockbuf": 16777217,
+    "smuxbuf": 16777217,
+    "streambuf": 16777217
+}

@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.8'
 services:
   kcp:
     image: kcp
@@ -8,16 +8,18 @@ services:
     container_name: kcp
     network_mode: host
     restart: always
-    env_file:
-      - .env
-    command: ["sh", "-c", "kcp -l $KCP_LOCAL -r $KCP_SERVER  $KCP_PARAMETERS"]
-
+    volumes:
+      - ./config/kcp.json:/etc/config/kcp.json
+    command: ["sh", "-c", "kcp_client -c /etc/config/kcp.json"]
 
   ss:
     image: shadowsocks/shadowsocks-libev
     container_name: buyvm
     network_mode: host
-    env_file:
-      - .env
+    volumes:
+      - ./config/shadowsocks.json:/etc/config/shadowsocks.json
+    # env_file:
+    #   - .env
+    command: ["sh", "-c", "ss-redir -c /etc/config/shadowsocks.json"]
     restart: always
-    command: ["sh", "-c", "ss-redir -v -s $SS_SERVER -p $SS_SERVER_PORT -b $SS_LOCAL -l $SS_LOCAL_PORT $SS_PARAMETERS"]
+    # command: ["sh", "-c", "ss-redir -v -s $SS_SERVER -p $SS_SERVER_PORT -b $SS_LOCAL -l $SS_LOCAL_PORT $SS_PARAMETERS"]
