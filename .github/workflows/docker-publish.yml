@@ -22,7 +22,7 @@ jobs:
         run: docker-compose -f docker-compose.yml build
 
       - name: Tag the Docker image for GHCR
-        run: docker tag sskcp:latest ghcr.io/${{ github.repository_owner }}/sskcp:latest
+        run: docker tag your-image-name:latest ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
 
       - name: Push the Docker image to GHCR
-        run: docker push ghcr.io/${{ github.repository_owner }}/sskcp:latest
+        run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}:latest
